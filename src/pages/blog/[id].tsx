@@ -22,7 +22,9 @@ const BlogId: NextPage<Props> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const data = await client.getList<Blog>({ endpoint: "blog" });
+  const data = await client.getList<Blog>({
+    endpoint: "blog",
+  });
   const ids = data.contents.map((content) => `/blog/${content.id}`);
   return {
     paths: ids,
